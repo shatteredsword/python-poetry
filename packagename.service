@@ -1,0 +1,13 @@
+[Unit]
+Description={packagename} Service
+After=multi-user.target
+
+[Service]
+Type=simple
+User={serviceuser}
+Group={serviceuser}
+WorkingDirectory=/opt/{serviceuser}/{reponame}
+ExecStart=/opt/{serviceuser}/.local/bin/poetry run python3 -m {packagename}
+
+[Install]
+WantedBy=multi-user.target
